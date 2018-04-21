@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import PriceList from './components/price-list';
 
-const url = "https://api.gdax.com/products/BTC-USD/ticker";
+const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
+const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
+const ethUrl = "https://api.gdax.com/products/ETH-USD/ticker";
 
 class App extends Component {
   constructor(props){
@@ -14,8 +16,9 @@ class App extends Component {
       currentLtcPrice: null,
       currentEthPrice: null
     }
+    this.firstRequest(btcUrl);
+    setInterval(() => {this.firstRequest(btcUrl)}, 10100)
 
-    this.firstRequest(url);
   };
 
   firstRequest(url) {
