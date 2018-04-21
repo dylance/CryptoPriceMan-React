@@ -29,6 +29,8 @@ class App extends Component {
       }).then((myJson) => {
           let price = Number(myJson.price);
           price = parseFloat(price);
+          // below line was tricky to figure out for me with the square brackets.
+          // I belive it works because the square brackets ge evaluated
           this.setState({[coin]: price});
           console.log(price);
 
