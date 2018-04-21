@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const PriceList = () => {
-  return(
+  return (
     <div>
-    Bitcoins
+      Bitcoins
     </div>
   );
-
 }
 
 export default PriceList;
