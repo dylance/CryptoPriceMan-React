@@ -16,18 +16,20 @@ class App extends Component {
       currentLtcPrice: null,
       currentEthPrice: null
     }
-    this.firstRequest(btcUrl);
+    console.log(Object.keys(this.state))
+    this.firstRequest(btcUrl, "currentBtcPrice");
+    this.firstRequest(ltcUrl, "currentLtcPrice");
     setInterval(() => {this.firstRequest(btcUrl)}, 10100)
 
   };
 
-  firstRequest(url) {
+  firstRequest(url,coin) {
       fetch(url).then((response) => {
           return response.json();
       }).then((myJson) => {
           let price = Number(myJson.price);
           price = parseFloat(price);
-          this.setState({currentBtcPrice: price});
+          this.setState({[coin]: price});
           console.log(price);
 
       }).catch(function(err) {
@@ -50,6 +52,7 @@ class App extends Component {
         </p>
         <PriceList />
         {this.state.currentBtcPrice}
+        {this.state.currentLtcPrice}
       </div>
     );
   }
