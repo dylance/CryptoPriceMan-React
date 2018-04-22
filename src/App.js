@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import PriceList from './components/price-list';
+import PriceList from './components/price_list';
 
 const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
 const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
@@ -12,15 +12,17 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentBtcPrice: 8000,
+      currentBtcPrice: null,
       currentLtcPrice: null,
       currentEthPrice: null
     }
-    console.log(Object.keys(this.state))
+
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
-    setInterval(() => {this.currentPriceRequest(btcUrl)}, 10100)
+    setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
+    setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
+    setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
 
   };
 
@@ -34,8 +36,6 @@ class App extends Component {
           // below line was tricky to figure out for me with the square brackets.
           // I belive it works because the square brackets ge evaluated
           this.setState({[coin]: price});
-          console.log(price);
-
       }).catch(function(err) {
           console.log("the Gdax API call did not go through!! try again")
       })
@@ -54,10 +54,14 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <PriceList />
-        {this.state.currentBtcPrice}
-        {this.state.currentLtcPrice}
-        {this.state.currentEthPrice}
+        <PriceList
+          coin={this.state.currentBtcPrice}
+          coin1={this.state.currentLtcPrice}
+          coin2={this.state.currentEthPrice}
+
+
+          />
+
       </div>
     );
   }

@@ -1,9 +1,17 @@
 import React from 'react';
 
-const PriceList = () => {
+const PriceList = (props) => {
   return (
     <div>
-      Bitcoins
+    <div className="col-sm-4">
+      {props.coin}
+    </div>
+    <div className="col-sm-4">
+      {props.coin1}
+    </div>
+    <div className="col-sm-4">
+      {props.coin2}
+    </div>
     </div>
   );
 }
