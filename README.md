@@ -15,6 +15,7 @@ Project is easy to run.
 #### TO DO
 
 Everything!!!!!!!!!
+- figure out way to cache previous daily highs so don't have to wait to for requests to get back and wait on render
 
 ## Facebook Create React App boiler plate code.
 
