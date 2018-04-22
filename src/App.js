@@ -19,7 +19,9 @@ class App extends Component {
       currentBtcPrice: null,
       currentLtcPrice: null,
       currentEthPrice: null,
-      btcHigh: null
+      btcHigh: null,
+      ltcHigh: null,
+      ethHigh: null
 
     }
 
@@ -27,6 +29,8 @@ class App extends Component {
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
     this.dailyHighRequest(btcHighUrl, "btcHigh");
+    this.dailyHighRequest(btcHighUrl, "ltcHigh");
+    this.dailyHighRequest(btcHighUrl, "ethHigh");
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
@@ -56,7 +60,6 @@ class App extends Component {
           let high = Number(myJson.high);
           high = parseFloat(high)
           this.setState({[coin]: high});
-          console.log(this.state.btcHigh);
       }).catch((err) => {
           console.log("The API Call did not go through!! try again")
           // Error :(
