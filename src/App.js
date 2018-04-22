@@ -28,6 +28,7 @@ class App extends Component {
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
+    
     this.dailyHighRequest(btcHighUrl, "btcHigh");
     this.dailyHighRequest(ltcHighUrl, "ltcHigh");
     this.dailyHighRequest(ethHighUrl, "ethHigh");
