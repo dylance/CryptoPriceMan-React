@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import PriceList from './components/price_list';
+import DailyHigh from './components/daily_high';
 
 const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
 const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
@@ -79,14 +80,16 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <DailyHigh
+          btcHigh={this.state.btcHigh}
+          ltcHigh={this.state.ltcHigh}
+          ethHigh={this.state.ethHigh}
+        />
         <PriceList
           btcPrice={this.state.currentBtcPrice}
           ltcPrice={this.state.currentLtcPrice}
           ethPrice={this.state.currentEthPrice}
-
-
-          />
-
+        />
       </div>
     );
   }
