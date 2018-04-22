@@ -17,13 +17,14 @@ class App extends Component {
       currentEthPrice: null
     }
     console.log(Object.keys(this.state))
-    this.firstRequest(btcUrl, "currentBtcPrice");
-    this.firstRequest(ltcUrl, "currentLtcPrice");
-    setInterval(() => {this.firstRequest(btcUrl)}, 10100)
+    this.currentPriceRequest(btcUrl, "currentBtcPrice");
+    this.currentPriceRequest(ltcUrl, "currentLtcPrice");
+    this.currentPriceRequest(ethUrl, "currentEthPrice");
+    setInterval(() => {this.currentPriceRequest(btcUrl)}, 10100)
 
   };
 
-  firstRequest(url,coin) {
+  currentPriceRequest(url,coin) {
       // need to use arrow functions with fetch to have 'this' lexically scoped to component
       fetch(url).then((response) => {
           return response.json();
@@ -56,6 +57,7 @@ class App extends Component {
         <PriceList />
         {this.state.currentBtcPrice}
         {this.state.currentLtcPrice}
+        {this.state.currentEthPrice}
       </div>
     );
   }
