@@ -34,6 +34,7 @@ color: green;
     border-radius: 45px;
     border-color:  #00A74F;
     transition: .2s;
+    cursor: pointer;
 
 }
 
@@ -47,6 +48,7 @@ color: green;
     border-radius: 45px;
     border-color:  #646566;
     transition: .2s;
+    cursor: pointer;
 
 }
 
@@ -62,11 +64,13 @@ color: green;
     /*border-top: 2px solid;
     border-color: #646566;
     transform: scale(1.1);*/
+    cursor: pointer;
 
     -webkit-filter: drop-shadow(2px 1px 0 blue)
                       drop-shadow(-1px -1px 0 blue);
       filter: drop-shadow(2px 1px 0 blue)
               drop-shadow(-1px -1px 0 blue);
+
 
 }
 
