@@ -14,7 +14,12 @@ Project is easy to run.
 
 #### TO DO
 
-Everything!!!!!!!!!
+Immediate:
+- fix styling and collapsing with bootstrap columns
+- fix lining up of logos
+- rename classes 
+
+long term:
 - figure out way to cache previous daily highs so don't have to wait to for requests to get back and wait on render
 
 ## Facebook Create React App boiler plate code.
