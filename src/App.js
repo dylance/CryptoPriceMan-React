@@ -30,8 +30,8 @@ class App extends Component {
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
     this.dailyHighRequest(btcHighUrl, "btcHigh");
-    this.dailyHighRequest(btcHighUrl, "ltcHigh");
-    this.dailyHighRequest(btcHighUrl, "ethHigh");
+    this.dailyHighRequest(ltcHighUrl, "ltcHigh");
+    this.dailyHighRequest(ethHighUrl, "ethHigh");
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
