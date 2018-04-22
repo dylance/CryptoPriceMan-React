@@ -7,6 +7,10 @@ const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
 const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
 const ethUrl = "https://api.gdax.com/products/ETH-USD/ticker";
 
+const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
+const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
+const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -14,12 +18,15 @@ class App extends Component {
     this.state = {
       currentBtcPrice: null,
       currentLtcPrice: null,
-      currentEthPrice: null
+      currentEthPrice: null,
+      btcHigh: null
+
     }
 
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
+    this.dailyHighRequest(btcHighUrl, "btcHigh");
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
@@ -39,6 +46,21 @@ class App extends Component {
       }).catch(function(err) {
           console.log("the Gdax API call did not go through!! try again")
       })
+  }
+
+  // url (required), options (optional)
+  dailyHighRequest(url, coin) {
+      fetch(url).then((response) => {
+          return response.json();
+      }).then((myJson) => {
+          let high = Number(myJson.high);
+          high = parseFloat(high)
+          this.setState({[coin]: high});
+          console.log(this.state.btcHigh);
+      }).catch((err) => {
+          console.log("The API Call did not go through!! try again")
+          // Error :(
+      });
   }
 
 
