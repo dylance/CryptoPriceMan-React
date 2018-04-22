@@ -24,6 +24,7 @@ class App extends Component {
   };
 
   firstRequest(url,coin) {
+      // need to use arrow functions with fetch to have 'this' lexically scoped to component
       fetch(url).then((response) => {
           return response.json();
       }).then((myJson) => {
