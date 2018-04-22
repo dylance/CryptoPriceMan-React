@@ -5,19 +5,19 @@ const PriceList = (props) => {
     <div>
     <div className="Price-container col-sm-4">
     <span>
-    <img id="BTC-Logo" src={process.env.PUBLIC_URL + '/img/btc.png'} height="35" alt="Bitcoin"/>
+    <img id="BTC-Logo" src={process.env.PUBLIC_URL + '/img/btc.png'} height="70" alt="Bitcoin"/>
       {props.btcPrice}
     </span>
     </div>
     <div className="Price-container col-sm-4">
     <span>
-    <img id="LTC-Logo" src={process.env.PUBLIC_URL + '/img/ltc.png'} height="35" alt="Bitcoin"/>
+    <img id="LTC-Logo" src={process.env.PUBLIC_URL + '/img/ltc.png'} height="70" alt="Bitcoin"/>
       {props.ltcPrice}
     </span>
     </div>
     <div className="Price-container col-sm-4">
     <span>
-    <img id="ETH-Logo" src={process.env.PUBLIC_URL + '/img/eth.png'} height="35" alt="Bitcoin"/>
+    <img id="ETH-Logo" src={process.env.PUBLIC_URL + '/img/eth.png'} height="70" alt="Bitcoin"/>
       {props.ethPrice}
     </span>
     </div>
