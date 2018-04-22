@@ -55,9 +55,9 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <PriceList
-          coin={this.state.currentBtcPrice}
-          coin1={this.state.currentLtcPrice}
-          coin2={this.state.currentEthPrice}
+          btcPrice={this.state.currentBtcPrice}
+          ltcPrice={this.state.currentLtcPrice}
+          ethPrice={this.state.currentEthPrice}
 
 
           />
