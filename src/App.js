@@ -23,7 +23,6 @@ class App extends Component {
       btcHigh: null,
       ltcHigh: null,
       ethHigh: null
-
     }
 
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
@@ -32,10 +31,10 @@ class App extends Component {
     this.dailyHighRequest(btcHighUrl, "btcHigh");
     this.dailyHighRequest(ltcHighUrl, "ltcHigh");
     this.dailyHighRequest(ethHighUrl, "ethHigh");
+
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
-
   };
 
   currentPriceRequest(url,coin) {
@@ -66,9 +65,6 @@ class App extends Component {
           // Error :(
       });
   }
-
-
-
 
   render() {
     return (
