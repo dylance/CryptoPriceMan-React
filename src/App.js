@@ -7,10 +7,12 @@ import DailyHigh from './components/daily_high';
 const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
 const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
 const ethUrl = "https://api.gdax.com/products/ETH-USD/ticker";
+const bchUrl = "https://api.gdax.com/products/BCH-USD/ticker";
 
 const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
 const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
 const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
+const bchHighUrl = "https://api.gdax.com/products/bch-usd/stats"
 
 class App extends Component {
   constructor(props){
@@ -20,15 +22,18 @@ class App extends Component {
       currentBtcPrice: null,
       currentLtcPrice: null,
       currentEthPrice: null,
+      currentBchPrice: null,
       btcHigh: null,
       ltcHigh: null,
-      ethHigh: null
+      ethHigh: null,
+      bchHigh: null
     }
 
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
-    
+    this.currentPriceRequest(ethUrl, "currentEthPrice");
+
     this.dailyHighRequest(btcHighUrl, "btcHigh");
     this.dailyHighRequest(ltcHighUrl, "ltcHigh");
     this.dailyHighRequest(ethHighUrl, "ethHigh");
@@ -36,6 +41,7 @@ class App extends Component {
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
+    setInterval(() => {this.currentPriceRequest(bchUrl,"currentBchPrice")}, 10100)
   };
 
   currentPriceRequest(url,coin) {
@@ -86,6 +92,7 @@ class App extends Component {
           btcPrice={this.state.currentBtcPrice}
           ltcPrice={this.state.currentLtcPrice}
           ethPrice={this.state.currentEthPrice}
+          bchPrice={this.state.currentBchPrice}
         />
       </div>
     );

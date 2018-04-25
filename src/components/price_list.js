@@ -22,6 +22,12 @@ const PriceList = (props) => {
           <span id="ETH-Price">{props.ethPrice}</span>
           </span>
         </div>
+        <div className="Price-container col-sm-4">
+          <span>
+          <img id="ETH-Logo" className="logo" src={process.env.PUBLIC_URL + '/img/bch.png'} height="70" alt="Bitcoin"/>
+          <span id="ETH-Price">{props.bchPrice}</span>
+          </span>
+        </div>
       </div>
     </div>
   );
