@@ -9,7 +9,10 @@ See below code for boiler plate readme from create react app
 Project is easy to run.
 
 `npm install`
+
 `npm run build`
+
+`node server.js`
 
 Website can be viewed at: http://www.cryptopriceman.com
 
