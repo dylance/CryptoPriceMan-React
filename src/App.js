@@ -20,10 +20,10 @@ class App extends Component {
 
     this.state = {
       currentTickers: {
-      currentBtcTicker: 9000,
-      currentLtcTicker: null,
-      currentEthTicker: null,
-      currentBchTicker: null
+      currentBtcTicker: {},
+      currentLtcTicker: {},
+      currentEthTicker: {},
+      currentBchTicker: {}
       },
       btcHigh: null,
       ltcHigh: null,
@@ -56,16 +56,20 @@ class App extends Component {
           price = parseFloat(price);
           // below line was tricky to figure out for me with the square brackets.
           // I belive it works because the square brackets ge evaluated
+
+          // below links helped me setState on object inside of state
+          // https://stackoverflow.com/questions/27105257/storing-an-object-in-state-of-a-react-component
+          // https://stackoverflow.com/questions/34956479/how-do-i-setstate-for-nested-array/34956745#34956745
           this.setState({
             currentTickers: {
               ...this.state.currentTickers,
-              [coin]: price,
+              [coin]: myJson,
             },
           });
 
           this.setState({
             currentPrices: Object.assign({}, this.state.currentTickers, {
-              [coin]: price,
+              [coin]: myJson,
             }),
           });
         }).catch(function(err) {
@@ -103,10 +107,10 @@ class App extends Component {
           ethHigh={this.state.ethHigh}
         />
         <CurrentPriceList
-          btcPrice={this.state.currentTickers.currentBtcTicker}
-          ltcPrice={this.state.currentTickers.currentLtcTicker}
-          ethPrice={this.state.currentTickers.currentEthTicker}
-          bchPrice={this.state.currentTickers.currentBchTicker}
+          btcPrice={Number(this.state.currentTickers.currentBtcTicker.price).toFixed(2)}
+          ltcPrice={Number(this.state.currentTickers.currentLtcTicker.price).toFixed(2)}
+          ethPrice={Number(this.state.currentTickers.currentEthTicker.price).toFixed(2)}
+          bchPrice={Number(this.state.currentTickers.currentBchTicker.price).toFixed(2)}
         />
       </div>
     );
