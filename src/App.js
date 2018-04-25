@@ -19,11 +19,11 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentPrices: {
-      currentBtcPrice: 9000,
-      currentLtcPrice: null,
-      currentEthPrice: null,
-      currentBchPrice: null
+      currentTickers: {
+      currentBtcTicker: 9000,
+      currentLtcTicker: null,
+      currentEthTicker: null,
+      currentBchTicker: null
       },
       btcHigh: null,
       ltcHigh: null,
@@ -32,19 +32,19 @@ class App extends Component {
     }
 
 
-    this.currentPriceRequest(btcUrl, "currentBtcPrice");
-    this.currentPriceRequest(ltcUrl, "currentLtcPrice");
-    this.currentPriceRequest(ethUrl, "currentEthPrice");
-    this.currentPriceRequest(bchUrl, "currentBchPrice");
+    this.currentPriceRequest(btcUrl, "currentBtcTicker");
+    this.currentPriceRequest(ltcUrl, "currentLtcTicker");
+    this.currentPriceRequest(ethUrl, "currentEthTicker");
+    this.currentPriceRequest(bchUrl, "currentBchTicker");
 
     this.dailyHighRequest(btcHighUrl, "btcHigh");
     this.dailyHighRequest(ltcHighUrl, "ltcHigh");
     this.dailyHighRequest(ethHighUrl, "ethHigh");
 
-    setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcPrice")}, 10100)
-    setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcPrice")}, 10100)
-    setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthPrice")}, 10100)
-    setInterval(() => {this.currentPriceRequest(bchUrl,"currentBchPrice")}, 10100)
+    setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(bchUrl,"currentBchTicker")}, 10100)
   };
 
   currentPriceRequest(url,coin) {
@@ -57,14 +57,14 @@ class App extends Component {
           // below line was tricky to figure out for me with the square brackets.
           // I belive it works because the square brackets ge evaluated
           this.setState({
-            currentPrices: {
-              ...this.state.currentPrices,
+            currentTickers: {
+              ...this.state.currentTickers,
               [coin]: price,
             },
           });
 
           this.setState({
-            currentPrices: Object.assign({}, this.state.currentPrices, {
+            currentPrices: Object.assign({}, this.state.currentTickers, {
               [coin]: price,
             }),
           });
@@ -103,10 +103,10 @@ class App extends Component {
           ethHigh={this.state.ethHigh}
         />
         <CurrentPriceList
-          btcPrice={this.state.currentPrices.currentBtcPrice}
-          ltcPrice={this.state.currentPrices.currentLtcPrice}
-          ethPrice={this.state.currentPrices.currentEthPrice}
-          bchPrice={this.state.currentPrices.currentBchPrice}
+          btcPrice={this.state.currentTickers.currentBtcTicker}
+          ltcPrice={this.state.currentTickers.currentLtcTicker}
+          ethPrice={this.state.currentTickers.currentEthTicker}
+          bchPrice={this.state.currentTickers.currentBchTicker}
         />
       </div>
     );
