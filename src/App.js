@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import PriceList from './components/price_list';
+import CurrentPriceList from './components/current_price_list';
 import DailyHigh from './components/daily_high';
 
 const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
@@ -19,20 +19,23 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currentBtcPrice: null,
+      currentPrices: {
+      currentBtcPrice: 9000,
       currentLtcPrice: null,
       currentEthPrice: null,
-      currentBchPrice: null,
+      currentBchPrice: null
+      },
       btcHigh: null,
       ltcHigh: null,
       ethHigh: null,
       bchHigh: null
     }
 
+
     this.currentPriceRequest(btcUrl, "currentBtcPrice");
     this.currentPriceRequest(ltcUrl, "currentLtcPrice");
     this.currentPriceRequest(ethUrl, "currentEthPrice");
-    this.currentPriceRequest(ethUrl, "currentEthPrice");
+    this.currentPriceRequest(bchUrl, "currentBchPrice");
 
     this.dailyHighRequest(btcHighUrl, "btcHigh");
     this.dailyHighRequest(ltcHighUrl, "ltcHigh");
@@ -53,8 +56,19 @@ class App extends Component {
           price = parseFloat(price);
           // below line was tricky to figure out for me with the square brackets.
           // I belive it works because the square brackets ge evaluated
-          this.setState({[coin]: price});
-      }).catch(function(err) {
+          this.setState({
+            currentPrices: {
+              ...this.state.currentPrices,
+              [coin]: price,
+            },
+          });
+
+          this.setState({
+            currentPrices: Object.assign({}, this.state.currentPrices, {
+              [coin]: price,
+            }),
+          });
+        }).catch(function(err) {
           console.log("the Gdax API call did not go through!! try again")
       })
   }
@@ -88,11 +102,11 @@ class App extends Component {
           ltcHigh={this.state.ltcHigh}
           ethHigh={this.state.ethHigh}
         />
-        <PriceList
-          btcPrice={this.state.currentBtcPrice}
-          ltcPrice={this.state.currentLtcPrice}
-          ethPrice={this.state.currentEthPrice}
-          bchPrice={this.state.currentBchPrice}
+        <CurrentPriceList
+          btcPrice={this.state.currentPrices.currentBtcPrice}
+          ltcPrice={this.state.currentPrices.currentLtcPrice}
+          ethPrice={this.state.currentPrices.currentEthPrice}
+          bchPrice={this.state.currentPrices.currentBchPrice}
         />
       </div>
     );
