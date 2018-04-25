@@ -9,7 +9,9 @@ See below code for boiler plate readme from create react app
 Project is easy to run.
 
 `npm install`
-`npm start`
+`npm run build`
+
+Website can be viewed at: http://www.cryptopriceman.com
 
 
 #### TO DO
@@ -17,7 +19,7 @@ Project is easy to run.
 Immediate:
 - fix styling and collapsing with bootstrap columns
 - fix lining up of logos
-- rename classes 
+- rename classes
 
 long term:
 - figure out way to cache previous daily highs so don't have to wait to for requests to get back and wait on render
