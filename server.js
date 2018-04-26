@@ -4,6 +4,7 @@ const app = express();
 const Gdax = require('gdax');
 const websocket = new Gdax.WebsocketClient(['BTC-USD']);
 const cors = require('cors')
+
 app.use(cors())
 
 const port = 45566;

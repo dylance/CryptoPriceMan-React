@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import CurrentPriceList from './components/current_price_list';
 import DailyHigh from './components/daily_high';
+import InstantBtcPrice from './components/instant_btc_price'
 
 const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
 const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
@@ -13,6 +14,8 @@ const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
 const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
 const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
 const bchHighUrl = "https://api.gdax.com/products/bch-usd/stats"
+
+const btcSocketPrice = "http://localhost:45566/btcprice"
 
 class App extends Component {
   constructor(props){
@@ -28,13 +31,16 @@ class App extends Component {
       btcHigh: null,
       ltcHigh: null,
       ethHigh: null,
-      bchHigh: null
+      bchHigh: null,
+      btcSocketPrice: null
     }
 
     this.currentPriceRequest(btcUrl, "currentBtcTicker");
     this.currentPriceRequest(ltcUrl, "currentLtcTicker");
     this.currentPriceRequest(ethUrl, "currentEthTicker");
     this.currentPriceRequest(bchUrl, "currentBchTicker");
+
+    setInterval(() => {this.socketRequest(btcSocketPrice)}, 50)
 
     setTimeout(() => {
       this.dailyHighRequest(btcHighUrl, "btcHigh");
@@ -93,6 +99,18 @@ class App extends Component {
       });
   }
 
+  socketRequest(url){
+  fetch(url).then((response) => {
+    return response.json();
+  }).then((myJson) => {
+    this.setState({ btcSocketPrice: myJson})
+
+  }).catch((err) => {
+    console.log("the websocket API call did not go through!! try again")
+  })
+
+}
+
   render() {
     return (
       <div>
@@ -118,6 +136,7 @@ class App extends Component {
           ethPrice={Number(this.state.currentTickers.currentEthTicker.price).toFixed(2)}
           bchPrice={Number(this.state.currentTickers.currentBchTicker.price).toFixed(2)}
         />
+        <InstantBtcPrice btcSocketPrice={this.state.btcSocketPrice} />
       </div>
       </div>
     );
