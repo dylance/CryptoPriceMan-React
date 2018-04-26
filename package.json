@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.3",
+    "gdax": "github:coinbase/gdax-node",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
