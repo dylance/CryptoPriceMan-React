@@ -20,12 +20,18 @@ Website can be viewed at: http://www.cryptopriceman.com
 #### TO DO
 
 Immediate:
-- fix styling and collapsing with bootstrap columns
+- Improve styling with bootstrap rows
 - fix lining up of logos
 - rename classes
+- add Data to current_price_item
 
 long term:
 - figure out way to cache previous daily highs so don't have to wait to for requests to get back and wait on render
+- Only use web socket for data
+- Create authentication systems
+- Use Authentication System so users can customize page view.
+- Add cookies to site so client can view prices from previous visit to site
+
 
 ## Facebook Create React App boiler plate code.
 
