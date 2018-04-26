@@ -26,6 +26,7 @@ color: green;
 #BTC-Logo{
     border: 2px solid transparent;
     border-radius: 45px;
+    animation: App-logo-spin infinite 5s linear;
 
 
 }
