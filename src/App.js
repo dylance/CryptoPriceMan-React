@@ -60,6 +60,7 @@ class App extends Component {
       fetch(url).then((response) => {
           return response.json();
       }).then((myJson) => {
+          myJson.coin = coin.slice(7, 10).toLowerCase();
           let price = Number(myJson.price);
           price = parseFloat(price);
           // below line was tricky to figure out for me with the square brackets.

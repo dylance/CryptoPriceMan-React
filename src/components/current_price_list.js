@@ -1,6 +1,19 @@
 import React from 'react';
+import CurrentPriceItem from './current_price_item'
 
 const CurrentPriceList = (props) => {
+
+  const priceRows =  Object.keys(props.currentPriceList).map((keyName, keyIndex) => {
+    // use keyName to get current key's name
+    // and a[keyName] to get its value
+    return (
+      <CurrentPriceItem
+        price={props.currentPriceList[keyName].price}
+        coin={props.currentPriceList[keyName].coin}
+      />
+    )
+  })
+
   return (
     <div className="container-fluid">
       <div className="row" id="rowprice">
@@ -28,6 +41,9 @@ const CurrentPriceList = (props) => {
           <img id="ETH-Logo" className="logo" src={process.env.PUBLIC_URL + '/img/eth.png'} height="70" alt="Bitcoin"/>
           <span id="ETH-Price">{Number(props.currentPriceList.currentEthTicker.price).toFixed(2)}</span>
           </span>
+        </div>
+        <div>
+          {priceRows}
         </div>
       </div>
     </div>
