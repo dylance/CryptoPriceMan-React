@@ -31,15 +31,17 @@ class App extends Component {
       bchHigh: null
     }
 
-
     this.currentPriceRequest(btcUrl, "currentBtcTicker");
     this.currentPriceRequest(ltcUrl, "currentLtcTicker");
     this.currentPriceRequest(ethUrl, "currentEthTicker");
     this.currentPriceRequest(bchUrl, "currentBchTicker");
 
-    this.dailyHighRequest(btcHighUrl, "btcHigh");
-    this.dailyHighRequest(ltcHighUrl, "ltcHigh");
-    this.dailyHighRequest(ethHighUrl, "ethHigh");
+    setTimeout(() => {
+      this.dailyHighRequest(btcHighUrl, "btcHigh");
+      this.dailyHighRequest(ltcHighUrl, "ltcHigh");
+      this.dailyHighRequest(ethHighUrl, "ethHigh");
+    }, 100)
+
 
     setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcTicker")}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcTicker")}, 10100)
@@ -93,6 +95,7 @@ class App extends Component {
 
   render() {
     return (
+      <div>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -101,17 +104,21 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+      </div>
+      <div>
         <DailyHigh
           btcHigh={this.state.btcHigh}
           ltcHigh={this.state.ltcHigh}
           ethHigh={this.state.ethHigh}
         />
         <CurrentPriceList
+          currentPriceList={this.state.currentTickers}
           btcPrice={Number(this.state.currentTickers.currentBtcTicker.price).toFixed(2)}
           ltcPrice={Number(this.state.currentTickers.currentLtcTicker.price).toFixed(2)}
           ethPrice={Number(this.state.currentTickers.currentEthTicker.price).toFixed(2)}
           bchPrice={Number(this.state.currentTickers.currentBchTicker.price).toFixed(2)}
         />
+      </div>
       </div>
     );
   }
