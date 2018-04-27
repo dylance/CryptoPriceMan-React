@@ -19,11 +19,16 @@ Website can be viewed at: http://www.cryptopriceman.com
 
 #### TO DO
 
+BUG!!! - unable to  `npm i` on ubunto server due to gdax package
+this leaves websocket disable from being run on website. urgent issues
+
 Immediate:
 - Improve styling with bootstrap rows
 - fix lining up of logos
 - rename classes
 - add Data to current_price_item
+- delay API calls so no longer getting 429 responses from rate limiting
+- add 24 hour high for BCH
 
 long term:
 - figure out way to cache previous daily highs so don't have to wait to for requests to get back and wait on render
