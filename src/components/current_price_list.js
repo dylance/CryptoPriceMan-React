@@ -12,6 +12,9 @@ const CurrentPriceList = (props) => {
         coin={props.currentPriceList[keyName].coin}
         time={props.currentPriceList[keyName].time}
         volume={props.currentPriceList[keyName].volume}
+        btcHigh={props.btcHigh}
+        ltcHigh={props.ltcHigh}
+        ethHigh={props.ethHigh}
       />
     )
   })

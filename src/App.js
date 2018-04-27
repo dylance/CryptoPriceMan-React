@@ -129,10 +129,10 @@ class App extends Component {
         />
         <CurrentPriceList
           currentPriceList={this.state.currentTickers}
-          btcPrice={Number(this.state.currentTickers.currentBtcTicker.price).toFixed(2)}
-          ltcPrice={Number(this.state.currentTickers.currentLtcTicker.price).toFixed(2)}
-          ethPrice={Number(this.state.currentTickers.currentEthTicker.price).toFixed(2)}
-          bchPrice={Number(this.state.currentTickers.currentBchTicker.price).toFixed(2)}
+          btcHigh={this.state.btcHigh}
+          ltcHigh={this.state.ltcHigh}
+          ethHigh={this.state.ethHigh}
+
         />
         <InstantBtcPrice btcSocketPrice={this.state.btcSocketPrice} />
       </div>

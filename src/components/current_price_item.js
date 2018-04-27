@@ -9,6 +9,15 @@ const CurrentPriceItem = (props) => {
   var volume = ''
   var ticker = props.coin || ''
 
+  var high = 0
+
+  if(props.coin == "ltc")
+    high = props.ltcHigh
+  else if (props.coin == "btc")
+    high = props.btcHigh
+  else if (props.coin == "eth")
+    high = props.ethHigh
+
 
   //2018-04-26T23:55:55.221000Z
   //var id = props.coin.toUpperCase() + "-Logo"
@@ -27,7 +36,7 @@ const CurrentPriceItem = (props) => {
         '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>{ticker.toUpperCase()}</th>
       <td>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-      <td>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+      <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
     </tr>
 
 
