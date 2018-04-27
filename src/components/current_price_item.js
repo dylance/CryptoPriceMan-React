@@ -5,18 +5,25 @@ const CurrentPriceItem = (props) => {
   var priceId = props.coin || ''
   var imgId = props.coin || ''
   var spanId = props.coin || ''
+  var time = ''
+  var volume = ''
+
+
+  //2018-04-26T23:55:55.221000Z
   //var id = props.coin.toUpperCase() + "-Logo"
   if (props.coin){
     priceId = props.coin.toUpperCase() + "-Price"
     imgId = props.coin.toUpperCase() + "-Logo"
     spanId = props.coin.toUpperCase() + "Span"
+    time = props.time.slice(11,19)
+    volume = Number(props.volume)
 
   }
   return (
     <div className="Price-container col-sm-12">
       <span id={spanId}>
         <img id={imgId} className="logo" src={process.env.PUBLIC_URL + '/img/' + props.coin +'.png'} height="70" alt="Bitcoin"/>
-        <span id={priceId}>{Number(props.price).toFixed(2)}</span>
+        <span id={priceId}>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}  The Time is :  {time}  The Volume is: {volume.toLocaleString(undefined, {maximumFractionDigits:2})}</span>
         <span></span>
       </span>
     </div>

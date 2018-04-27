@@ -10,6 +10,8 @@ const CurrentPriceList = (props) => {
       <CurrentPriceItem
         price={props.currentPriceList[keyName].price}
         coin={props.currentPriceList[keyName].coin}
+        time={props.currentPriceList[keyName].time}
+        volume={props.currentPriceList[keyName].volume}
       />
     )
   })
