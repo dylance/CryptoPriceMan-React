@@ -5,7 +5,7 @@
   "dependencies": {
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "gdax": "github:coinbase/gdax-node",
+    "gdax": "^0.7.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4"
