@@ -17,11 +17,27 @@ const CurrentPriceList = (props) => {
   })
 
   return (
+    <div>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Coin</th>
+      <th scope="col">Price</th>
+      <th scope="col">Volume</th>
+      <th scope="col">24Hr High</th>
+    </tr>
+  </thead>
+    <tbody>
+    {priceRows}
+    </tbody>
+  </table>
     <div className="container-fluid">
       <div className="row" id="rowprice">
-        {priceRows}
+
       </div>
+
     </div>
+  </div>
   );
 }
 

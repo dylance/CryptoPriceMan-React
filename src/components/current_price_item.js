@@ -7,6 +7,7 @@ const CurrentPriceItem = (props) => {
   var spanId = props.coin || ''
   var time = ''
   var volume = ''
+  var ticker = props.coin || ''
 
 
   //2018-04-26T23:55:55.221000Z
@@ -17,19 +18,32 @@ const CurrentPriceItem = (props) => {
     spanId = props.coin.toUpperCase() + "Span"
     time = props.time.slice(11,19)
     volume = Number(props.volume)
-
   }
   return (
-    <div className="Price-container col-sm-12">
-      <span id={spanId}>
-        <img id={imgId} className="logo" src={process.env.PUBLIC_URL + '/img/' + props.coin +'.png'} height="70" alt="Bitcoin"/>
-        <span id={priceId}>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}  The Time is :  {time}  The Volume is: {volume.toLocaleString(undefined, {maximumFractionDigits:2})}</span>
-        <span></span>
-      </span>
-    </div>
+
+
+    <tr>
+      <th scope="row"><img id={imgId} className="logo" src={process.env.PUBLIC_URL +
+        '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>{ticker.toUpperCase()}</th>
+      <td>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+      <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+      <td>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+    </tr>
+
 
   )
 
 }
 
 export default CurrentPriceItem;
+
+
+
+// {/*}
+// <div className="Price-container col-sm-12">
+//   <span id={spanId}>
+//     <img id={imgId} className="logo" src={process.env.PUBLIC_URL + '/img/' + props.coin +'.png'} height="70" alt="Bitcoin"/>
+//     <span id={priceId}>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}  The Time is :  {time}  The Volume is: {volume.toLocaleString(undefined, {maximumFractionDigits:2})}</span>
+//     <span></span>
+//   </span>
+// </div>*/}
