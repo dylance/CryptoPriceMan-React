@@ -15,7 +15,7 @@ const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
 const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
 const bchHighUrl = "https://api.gdax.com/products/bch-usd/stats"
 
-const btcSocketPrice = "http://localhost:45566/btcprice"
+const btcSocketPrice = "http://cryptopriceman.com:45566/btcprice"
 
 class App extends Component {
   constructor(props){
