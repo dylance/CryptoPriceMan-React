@@ -5,10 +5,10 @@ import CurrentPriceList from './components/current_price_list';
 import DailyHigh from './components/daily_high';
 import InstantBtcPrice from './components/instant_btc_price'
 
-const btcUrl = "https://api.gdax.com/products/BTC-USD/ticker";
-const ltcUrl = "https://api.gdax.com/products/LTC-USD/ticker";
-const ethUrl = "https://api.gdax.com/products/ETH-USD/ticker";
-const bchUrl = "https://api.gdax.com/products/BCH-USD/ticker";
+const btcUrl = "https://api.gdax.com/products/btc-" // /ticker
+const ltcUrl = "https://api.gdax.com/products/ltc-"
+const ethUrl = "https://api.gdax.com/products/eth-"
+const bchUrl = "https://api.gdax.com/products/bch-"
 
 const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
 const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
@@ -22,6 +22,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      currency: "usd",
       currentTickers: {
       currentBtcTicker: {},
       currentLtcTicker: {},
@@ -35,10 +36,10 @@ class App extends Component {
       btcSocketPrice: null
     }
 
-    this.currentPriceRequest(btcUrl, "currentBtcTicker");
-    this.currentPriceRequest(ltcUrl, "currentLtcTicker");
-    this.currentPriceRequest(ethUrl, "currentEthTicker");
-    this.currentPriceRequest(bchUrl, "currentBchTicker");
+    this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+    this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+    this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+    this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
 
     setInterval(() => {this.socketRequest(btcSocketPrice)}, 50)
 
@@ -46,13 +47,15 @@ class App extends Component {
       this.dailyHighRequest(btcHighUrl, "btcHigh");
       this.dailyHighRequest(ltcHighUrl, "ltcHigh");
       this.dailyHighRequest(ethHighUrl, "ethHigh");
-    }, 100)
+      this.dailyHighRequest(bchHighUrl, "bchHigh");
+    }, 1100)
 
 
-    setInterval(() => {this.currentPriceRequest(btcUrl,"currentBtcTicker")}, 10100)
-    setInterval(() => {this.currentPriceRequest(ltcUrl,"currentLtcTicker")}, 10100)
-    setInterval(() => {this.currentPriceRequest(ethUrl,"currentEthTicker")}, 10100)
-    setInterval(() => {this.currentPriceRequest(bchUrl,"currentBchTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(btcUrl + this.state.currency + "/ticker","currentBtcTicker")
+  console.log("the currency is ", this.state.currency)}, 10100)
+    setInterval(() => {this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker","currentLtcTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(ethUrl + this.state.currency + "/ticker","currentEthTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(bchUrl + this.state.currency + "/ticker","currentBchTicker")}, 10100)
   };
 
   currentPriceRequest(url,coin) {
@@ -115,27 +118,48 @@ class App extends Component {
   render() {
     return (
       <div>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Crypto Price Man</h1>
-        </header>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <h1 className="App-title">Welcome to Crypto Price Man</h1>
+          </header>
         </div>
-      <div>
-        <DailyHigh
-          btcHigh={this.state.btcHigh}
-          ltcHigh={this.state.ltcHigh}
-          ethHigh={this.state.ethHigh}
-        />
-        <CurrentPriceList
-          currentPriceList={this.state.currentTickers}
-          btcHigh={this.state.btcHigh}
-          ltcHigh={this.state.ltcHigh}
-          ethHigh={this.state.ethHigh}
+        <div>
+          <h1 onClick={ () => {
+             this.setState({currency: "usd"})
 
-        />
-        <InstantBtcPrice btcSocketPrice={this.state.btcSocketPrice} />
-      </div>
+          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
+
+        }}>Click here to change currency to   USD
+          </h1>
+          <h1 onClick={ () => {
+             this.setState({currency: "eur"})
+
+          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
+
+        }}>Click here to change currency to EUR
+          </h1>
+          <DailyHigh
+            btcHigh={this.state.btcHigh}
+            ltcHigh={this.state.ltcHigh}
+            ethHigh={this.state.ethHigh}
+          />
+          <CurrentPriceList
+            currency={this.state.currency}
+            currentPriceList={this.state.currentTickers}
+            btcHigh={this.state.btcHigh}
+            ltcHigh={this.state.ltcHigh}
+            ethHigh={this.state.ethHigh}
+            bchHigh={this.state.bchHigh}
+          />
+          <InstantBtcPrice btcSocketPrice={this.state.btcSocketPrice} />
+        </div>
       </div>
     );
   }
