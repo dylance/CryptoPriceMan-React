@@ -16,6 +16,7 @@ const CurrentPriceList = (props) => {
         ltcHigh={props.ltcHigh}
         ethHigh={props.ethHigh}
         bchHigh={props.bchHigh}
+        currency={props.currency}
       />
     )
   })

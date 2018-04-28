@@ -133,7 +133,7 @@ class App extends Component {
           this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
           this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
 
-        }}>Click here to change currency to USD
+        }}>Click here to change currency to   USD
           </h1>
           <h1 onClick={ () => {
              this.setState({currency: "eur"})
@@ -151,6 +151,7 @@ class App extends Component {
             ethHigh={this.state.ethHigh}
           />
           <CurrentPriceList
+            currency={this.state.currency}
             currentPriceList={this.state.currentTickers}
             btcHigh={this.state.btcHigh}
             ltcHigh={this.state.ltcHigh}
