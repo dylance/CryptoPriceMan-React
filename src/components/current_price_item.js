@@ -17,7 +17,9 @@ const CurrentPriceItem = (props) => {
     high = props.btcHigh
   else if (props.coin == "eth")
     high = props.ethHigh
-
+  else if (props.coin == "bch"){
+    high = props.bchHigh
+  }
 
   //2018-04-26T23:55:55.221000Z
   //var id = props.coin.toUpperCase() + "-Logo"
@@ -29,8 +31,6 @@ const CurrentPriceItem = (props) => {
     volume = Number(props.volume)
   }
   return (
-
-
     <tr>
       <th scope="row"><img id={imgId} className="logo" src={process.env.PUBLIC_URL +
         '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>{ticker.toUpperCase()}</th>
@@ -38,21 +38,18 @@ const CurrentPriceItem = (props) => {
       <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
     </tr>
-
-
   )
-
 }
 
 export default CurrentPriceItem;
 
 
-
-// {/*}
+//
+// hangint onto the old boot strap row I was using.
 // <div className="Price-container col-sm-12">
 //   <span id={spanId}>
 //     <img id={imgId} className="logo" src={process.env.PUBLIC_URL + '/img/' + props.coin +'.png'} height="70" alt="Bitcoin"/>
 //     <span id={priceId}>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}  The Time is :  {time}  The Volume is: {volume.toLocaleString(undefined, {maximumFractionDigits:2})}</span>
 //     <span></span>
 //   </span>
-// </div>*/}
+// </div>
