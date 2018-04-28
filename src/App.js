@@ -22,7 +22,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      currency: "eur",
+      currency: "usd",
       currentTickers: {
       currentBtcTicker: {},
       currentLtcTicker: {},
@@ -51,7 +51,8 @@ class App extends Component {
     }, 1100)
 
 
-    setInterval(() => {this.currentPriceRequest(btcUrl + this.state.currency + "/ticker","currentBtcTicker")}, 10100)
+    setInterval(() => {this.currentPriceRequest(btcUrl + this.state.currency + "/ticker","currentBtcTicker")
+  console.log("the currency is ", this.state.currency)}, 10100)
     setInterval(() => {this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker","currentLtcTicker")}, 10100)
     setInterval(() => {this.currentPriceRequest(ethUrl + this.state.currency + "/ticker","currentEthTicker")}, 10100)
     setInterval(() => {this.currentPriceRequest(bchUrl + this.state.currency + "/ticker","currentBchTicker")}, 10100)
@@ -124,6 +125,26 @@ class App extends Component {
           </header>
         </div>
         <div>
+          <h1 onClick={ () => {
+             this.setState({currency: "usd"})
+
+          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
+
+        }}>Click here to change currency to USD
+          </h1>
+          <h1 onClick={ () => {
+             this.setState({currency: "eur"})
+
+          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
+
+        }}>Click here to change currency to EUR
+          </h1>
           <DailyHigh
             btcHigh={this.state.btcHigh}
             ltcHigh={this.state.ltcHigh}
