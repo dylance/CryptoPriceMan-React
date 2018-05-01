@@ -4,6 +4,7 @@ import './App.css';
 import CurrentPriceList from './components/current_price_list';
 import DailyHigh from './components/daily_high';
 import InstantBtcPrice from './components/instant_btc_price'
+import Currency from './components/currency'
 
 const btcUrl = "https://api.gdax.com/products/btc-" // /ticker
 const ltcUrl = "https://api.gdax.com/products/ltc-"
@@ -15,7 +16,7 @@ const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
 const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
 const bchHighUrl = "https://api.gdax.com/products/bch-usd/stats"
 
-const btcSocketPrice = "http://cryptopriceman.com:45566/btcprice"
+const btcSocketPrice = "http://localhost:45566/btcprice"
 
 class App extends Component {
   constructor(props){
@@ -145,10 +146,8 @@ class App extends Component {
 
         }}>Click here to change currency to EUR
           </h1>
-          <DailyHigh
-            btcHigh={this.state.btcHigh}
-            ltcHigh={this.state.ltcHigh}
-            ethHigh={this.state.ethHigh}
+          <Currency
+            currency={this.state.currency}
           />
           <CurrentPriceList
             currency={this.state.currency}
