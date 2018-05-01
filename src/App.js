@@ -6,21 +6,11 @@ import DailyHigh from './components/daily_high';
 import InstantBtcPrice from './components/instant_btc_price'
 import Currency from './components/currency'
 
-const btcUrl = "https://api.gdax.com/products/btc-" // /ticker
-const ltcUrl = "https://api.gdax.com/products/ltc-"
-const ethUrl = "https://api.gdax.com/products/eth-"
-const bchUrl = "https://api.gdax.com/products/bch-"
-
 const tickerUrl = "https://api.gdax.com/products/"
 
 const gdaxCoins = ["btc", "bch", "ltc", "eth"]
 
-
-
-const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
-const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
-const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
-const bchHighUrl = "https://api.gdax.com/products/bch-usd/stats"
+const gdaxHighUrl = "https://api.gdax.com/products/" // + "btc-usd" + "/stats"
 
 const btcSocketPrice = "http://localhost:45566/btcprice"
 
@@ -47,18 +37,13 @@ class App extends Component {
       this.currentPriceRequest(tickerUrl + coin + "-"  +this.state.currency + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
     })
 
-    // this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
-    // this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
-    // this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
-    // this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
-
     setInterval(() => {this.socketRequest(btcSocketPrice)}, 50)
 
+
     setTimeout(() => {
-      this.dailyHighRequest(btcHighUrl, "btcHigh");
-      this.dailyHighRequest(ltcHighUrl, "ltcHigh");
-      this.dailyHighRequest(ethHighUrl, "ethHigh");
-      this.dailyHighRequest(bchHighUrl, "bchHigh");
+      gdaxCoins.forEach((coin) => {
+        this.dailyHighRequest(gdaxHighUrl + coin + "-" + this.state.currency + "/stats", coin + "High")
+      })
     }, 1100)
 
 
