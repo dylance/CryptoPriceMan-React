@@ -28,7 +28,7 @@ const CurrentPriceItem = (props) => {
     imgId = props.coin.toUpperCase() + "-Logo"
     spanId = props.coin.toUpperCase() + "Span"
     // getting cannot read property of undefined error on below line
-    // commented out to prevent site from going down 
+    // commented out to prevent site from going down
     //time = props.time.slice(11,19)
     volume = Number(props.volume)
   }

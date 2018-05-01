@@ -11,6 +11,12 @@ const ltcUrl = "https://api.gdax.com/products/ltc-"
 const ethUrl = "https://api.gdax.com/products/eth-"
 const bchUrl = "https://api.gdax.com/products/bch-"
 
+const tickerUrl = "https://api.gdax.com/products/"
+
+const gdaxCoins = ["btc", "bch", "ltc", "eth"]
+
+
+
 const btcHighUrl = "https://api.gdax.com/products/btc-usd/stats"
 const ltcHighUrl = "https://api.gdax.com/products/ltc-usd/stats"
 const ethHighUrl = "https://api.gdax.com/products/eth-usd/stats"
@@ -37,10 +43,14 @@ class App extends Component {
       btcSocketPrice: null
     }
 
-    this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
-    this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
-    this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
-    this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
+    gdaxCoins.forEach((coin) => {
+      this.currentPriceRequest(tickerUrl + coin + "-"  +this.state.currency + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
+    })
+
+    // this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
+    // this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
+    // this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
+    // this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
 
     setInterval(() => {this.socketRequest(btcSocketPrice)}, 50)
 
@@ -52,11 +62,13 @@ class App extends Component {
     }, 1100)
 
 
-    setInterval(() => {this.currentPriceRequest(btcUrl + this.state.currency + "/ticker","currentBtcTicker")
-  console.log("the currency is ", this.state.currency)}, 10100)
-    setInterval(() => {this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker","currentLtcTicker")}, 10100)
-    setInterval(() => {this.currentPriceRequest(ethUrl + this.state.currency + "/ticker","currentEthTicker")}, 10100)
-    setInterval(() => {this.currentPriceRequest(bchUrl + this.state.currency + "/ticker","currentBchTicker")}, 10100)
+    setInterval(() => {gdaxCoins.forEach((coin) => {
+      this.currentPriceRequest(tickerUrl + coin + "-"  +this.state.currency + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
+    })}
+    , 10100)
+    // setInterval(() => {this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker","currentLtcTicker")}, 10100)
+    // setInterval(() => {this.currentPriceRequest(ethUrl + this.state.currency + "/ticker","currentEthTicker")}, 10100)
+    // setInterval(() => {this.currentPriceRequest(bchUrl + this.state.currency + "/ticker","currentBchTicker")}, 10100)
   };
 
   currentPriceRequest(url,coin) {
