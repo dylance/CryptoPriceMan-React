@@ -11,6 +11,10 @@ const InstantBtcPrice = (props) => {
           <span></span>
         </span>
       </div>
+      <div className="Price-container col-sm-12">
+        <span id="BTCSpan"height="75">
+        </span>
+      </div>
     </div>
   )
 }
