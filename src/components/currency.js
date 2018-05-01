@@ -12,17 +12,19 @@ const Currency = (props) => {
             <div className="col-xs-3">
                 <img
                   src={process.env.PUBLIC_URL + '/img/usd.png'} height="90" alt="USD"
-                  onClick={ () => {
-                    console.log("THE USD img has been clicked")
-                  }}
+                  onClick={
+                     () => props.onUsdClick(props.currency)
+                  }
+
                 />
             </div>
             <div className="col-xs-3">
               <img
                 src={process.env.PUBLIC_URL + '/img/eur.png'} height="90" alt="USD"
-                onClick={ () => {
-                  console.log("THE EUR img has been clicked")
-                }}
+                onClick={
+                   () => props.onEurClick(props.currency)
+                }
+
               />
             </div>
             <div className="col-xs-3">

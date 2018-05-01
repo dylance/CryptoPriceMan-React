@@ -148,6 +148,8 @@ class App extends Component {
           </h1>
           <Currency
             currency={this.state.currency}
+            onUsdClick={currency => this.setState({currency: "usd"}) }
+            onEurClick={currency => this.setState({currency: "eur"}) }
           />
           <CurrentPriceList
             currency={this.state.currency}
