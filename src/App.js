@@ -126,26 +126,6 @@ class App extends Component {
           </header>
         </div>
         <div>
-          <h1 onClick={ () => {
-             this.setState({currency: "usd"})
-
-          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
-          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
-          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
-          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
-
-        }}>Click here to change currency to   USD
-          </h1>
-          <h1 onClick={ () => {
-             this.setState({currency: "eur"})
-
-          this.currentPriceRequest(btcUrl + this.state.currency + "/ticker", "currentBtcTicker");
-          this.currentPriceRequest(ltcUrl + this.state.currency + "/ticker", "currentLtcTicker");
-          this.currentPriceRequest(ethUrl + this.state.currency + "/ticker", "currentEthTicker");
-          this.currentPriceRequest(bchUrl + this.state.currency + "/ticker", "currentBchTicker");
-
-        }}>Click here to change currency to EUR
-          </h1>
           <Currency
             currency={this.state.currency}
             onUsdClick={currency => this.setState({currency: "usd"}) }
