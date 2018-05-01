@@ -125,8 +125,12 @@ class App extends Component {
         <div>
           <Currency
             currency={this.state.currency}
-            onUsdClick={currency => this.setState({currency: "usd"}) }
-            onEurClick={currency => this.setState({currency: "eur"}) }
+            onUsdClick={currency => (gdaxCoins.forEach((coin) => {
+              this.currentPriceRequest(tickerUrl + coin + "-"  +"usd" + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
+            }),this.setState({currency: "usd"})) }
+            onEurClick={currency => (gdaxCoins.forEach((coin) => {
+              this.currentPriceRequest(tickerUrl + coin + "-"  +"eur" + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
+            }),this.setState({currency: "eur"})) }
           />
           <CurrentPriceList
             currency={this.state.currency}
