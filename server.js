@@ -31,11 +31,13 @@ websocket.on('close', () => {
  /* ... */
 });
 
+currentPriceRequest("https://api.gdax.com/products/btc-usd/ticker");
+
 setInterval(() => {
   currentPriceRequest("https://api.gdax.com/products/btc-usd/ticker");
-}, 10)
+}, 10100)
 
-currentPriceRequest("https://api.gdax.com/products/btc-usd/ticker");
+
 
 app.get('/btcprice', (req, res) => {
  res.send(priceOfBtc)
@@ -93,17 +95,14 @@ function currentPriceRequest(url) {
     // need to use arrow functions with fetch to have 'this' lexically scoped to component
     fetch(url).then((response) => {
         //console.log(response)
-        console.log(response.status)
+
         if (response.status == 200){
         return response.json();
       }
     }).then((myJson) => {
         if (myJson){
           btcTicker = myJson;
-      }
-      else {
-        console.log("myJson was undefined")
-      }
+       }
     }).catch(function(err) {
         console.log("the Gdax API call did not go through!! try again")
     })
