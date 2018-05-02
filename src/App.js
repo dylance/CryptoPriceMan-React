@@ -13,7 +13,7 @@ const gdaxCoins = ["btc", "bch", "ltc", "eth"]
 const gdaxHighUrl = "https://api.gdax.com/products/" // + "btc-usd" + "/stats"
 
 // can maybe try using template literals
-const btcSocketPrice = "http://localhost:45566/btcprice"
+const btcSocketPrice = "http://cryptopriceman.com:45566/btcprice"
 
 class App extends Component {
   constructor(props){
