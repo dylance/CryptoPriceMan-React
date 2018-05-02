@@ -34,9 +34,14 @@ const CurrentPriceItem = (props) => {
   }
   return (
     <tr>
-      <th scope="row"><img id={imgId} className="logo" src={process.env.PUBLIC_URL +
-        '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>{ticker.toUpperCase()}</th>
-      <td>{Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})} {props.currency}</td>
+      <th scope="row">
+
+        <img id={imgId} className="logo" src={process.env.PUBLIC_URL +
+        '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>
+        {ticker.toUpperCase()}</th>
+      <td>
+        <span>{props.currency == "usd" ? "$ " : "€ " }</span>
+        {Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
     </tr>
