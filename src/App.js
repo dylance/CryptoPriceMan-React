@@ -128,10 +128,24 @@ class App extends Component {
             currency={this.state.currency}
             onUsdClick={currency => (gdaxCoins.forEach((coin) => {
               this.currentPriceRequest(tickerUrl + coin + "-"  +"usd" + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
-            }),this.setState({currency: "usd"})) }
+            }),
+            setTimeout(() => {
+              gdaxCoins.forEach((coin) => {
+                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "usd" + "/stats", coin + "High")
+              })
+            }, 1100),
+            this.setState({currency: "usd"})) }
+
+
             onEurClick={currency => (gdaxCoins.forEach((coin) => {
               this.currentPriceRequest(tickerUrl + coin + "-"  +"eur" + "/ticker", ("current"+ coin[0].toUpperCase() + coin[1] + coin[2] +  "Ticker"));
-            }),this.setState({currency: "eur"})) }
+            }),
+            setTimeout(() => {
+              gdaxCoins.forEach((coin) => {
+                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "eur" + "/stats", coin + "High")
+              })
+            }, 1100),
+            this.setState({currency: "eur"})) }
           />
           <CurrentPriceList
             currency={this.state.currency}
