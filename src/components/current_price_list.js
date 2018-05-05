@@ -16,13 +16,17 @@ const CurrentPriceList = (props) => {
         ltcHigh={props.ltcHigh}
         ethHigh={props.ethHigh}
         bchHigh={props.bchHigh}
+        btcLow={props.btcLow}
+        ltcLow={props.ltcLow}
+        ethLow={props.ethLow}
+        bchLow={props.bchLow}
         currency={props.currency}
       />
     )
   })
 
   return (
-    <div>
+    <div id="table">
     <table class="table">
   <thead>
     <tr>
@@ -30,6 +34,7 @@ const CurrentPriceList = (props) => {
       <th scope="col">Price</th>
       <th scope="col">Volume</th>
       <th scope="col">24Hr High</th>
+      <th scope="col">24Hr Low</th>
     </tr>
   </thead>
     <tbody>

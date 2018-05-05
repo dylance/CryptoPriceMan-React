@@ -9,16 +9,25 @@ const CurrentPriceItem = (props) => {
   var volume = ''
   var ticker = props.coin || ''
 
-  var high = 0
+  var high = 0;
+  var low = 0;
 
-  if(props.coin == "ltc")
+  if(props.coin == "ltc"){
     high = props.ltcHigh
-  else if (props.coin == "btc")
+    low = props.ltcLow
+  }
+  else if (props.coin == "btc"){
     high = props.btcHigh
-  else if (props.coin == "eth")
+    low= props.btcLow
+  }
+  else if (props.coin == "eth"){
     high = props.ethHigh
+    low = props.ethLow
+  }
   else if (props.coin == "bch"){
     high = props.bchHigh
+    low = props.bchLow
+
   }
 
   //2018-04-26T23:55:55.221000Z
@@ -44,6 +53,7 @@ const CurrentPriceItem = (props) => {
         {Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+      <td>{Number(low).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
     </tr>
   )
 }

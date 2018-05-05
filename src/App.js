@@ -13,7 +13,8 @@ const gdaxCoins = ["btc", "bch", "ltc", "eth"]
 const gdaxHighUrl = "https://api.gdax.com/products/" // + "btc-usd" + "/stats"
 
 // can maybe try using template literals
-const btcSocketPrice = "http://cryptopriceman.com:45566/btcprice"
+//const btcSocketPrice = "http://cryptopriceman.com:45566/btcprice"
+const btcSocketPrice = "http://localhost:45566/btcprice"
 
 class App extends Component {
   constructor(props){
@@ -31,6 +32,10 @@ class App extends Component {
       ltcHigh: null,
       ethHigh: null,
       bchHigh: null,
+      btcLow: null,
+      ltcLow: null,
+      ethLow: null,
+      bchLow: null,
       btcSocketPrice: null
     }
 
@@ -43,7 +48,7 @@ class App extends Component {
 
     setTimeout(() => {
       gdaxCoins.forEach((coin) => {
-        this.dailyHighRequest(gdaxHighUrl + coin + "-" + this.state.currency + "/stats", coin + "High")
+        this.dailyHighRequest(gdaxHighUrl + coin + "-" + this.state.currency + "/stats", coin)
       })
     }, 1100)
 
@@ -95,7 +100,9 @@ class App extends Component {
       }).then((myJson) => {
           let high = Number(myJson.high);
           high = parseFloat(high)
-          this.setState({[coin]: high});
+          let low = Number(myJson.low);
+          low = parseFloat(low)
+          this.setState({[coin + "Low"]: low,[coin+ "High"]: high });
       }).catch((err) => {
           console.log("The API Call did not go through!! try again")
           // Error :(
@@ -154,6 +161,10 @@ class App extends Component {
             ltcHigh={this.state.ltcHigh}
             ethHigh={this.state.ethHigh}
             bchHigh={this.state.bchHigh}
+            btcLow={this.state.btcLow}
+            ltcLow={this.state.ltcLow}
+            ethLow={this.state.ethLow}
+            bchLow={this.state.bchLow}
           />
           <InstantBtcPrice btcSocketPrice={this.state.btcSocketPrice} />
         </div>
