@@ -138,7 +138,7 @@ class App extends Component {
             }),
             setTimeout(() => {
               gdaxCoins.forEach((coin) => {
-                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "usd" + "/stats", coin + "High")
+                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "usd" + "/stats", coin)
               })
             }, 1100),
             this.setState({currency: "usd"})) }
@@ -149,7 +149,7 @@ class App extends Component {
             }),
             setTimeout(() => {
               gdaxCoins.forEach((coin) => {
-                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "eur" + "/stats", coin + "High")
+                this.dailyHighRequest(gdaxHighUrl + coin + "-" + "eur" + "/stats", coin )
               })
             }, 1100),
             this.setState({currency: "eur"})) }
