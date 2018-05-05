@@ -26,7 +26,7 @@ color: green;
 #BTC-Logo{
     border: 2px solid transparent;
     border-radius: 45px;
-  
+
 
 
 }
@@ -200,4 +200,16 @@ margin-bottom: 9px;
 
 .history{
     background-color: #20232a;
+}
+
+.Price-Table {
+    overflow: scroll;
+}
+
+.Pricess {
+  min-width: 140px;
+}
+
+.table-logos {
+  min-width: 140px;
 }

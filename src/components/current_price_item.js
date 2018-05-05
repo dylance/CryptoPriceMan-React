@@ -43,14 +43,14 @@ const CurrentPriceItem = (props) => {
   }
   return (
     <tr>
-      <th scope="row">
-
+      <th scope="row" className="table-logos">
+        <span>
         <img id={imgId} className="logo" src={process.env.PUBLIC_URL +
         '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>
-        {ticker.toUpperCase()}</th>
-      <td>
-        <span>{props.currency == "usd" ? "$ " : "€ " }</span>
-        {Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+        {ticker.toUpperCase()}</span></th>
+      <td className="Pricess">
+        <span >{props.currency == "usd" ? "$ " : "€ " }
+        {Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}</span></td>
       <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
       <td>{Number(low).toLocaleString(undefined, {maximumFractionDigits:2})}</td>

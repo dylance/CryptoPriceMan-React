@@ -26,7 +26,7 @@ const CurrentPriceList = (props) => {
   })
 
   return (
-    <div id="table">
+    <div className="Price-Table">
     <table class="table">
   <thead>
     <tr>
