@@ -10,7 +10,7 @@ const Currency = (props) => {
                 <span>Select Currency:</span>
             </div>
             <div className="col-xs-3">
-                <img
+                <  img className="currency-logo"
                   src={process.env.PUBLIC_URL + '/img/usd.png'} height="70" alt="USD"
                   onClick={
                      () => props.onUsdClick(props.currency)
@@ -19,7 +19,7 @@ const Currency = (props) => {
                 />
             </div>
             <div className="col-xs-3">
-              <img
+              <img className="currency-logo"
                 src={process.env.PUBLIC_URL + '/img/eur.png'} height="70" alt="USD"
                 onClick={
                    () => props.onEurClick(props.currency)
