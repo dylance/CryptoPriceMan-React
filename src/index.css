@@ -112,6 +112,7 @@ margin-bottom: 9px;
     background: linear-gradient(to bottom right,#457fca,#5691c8 );
     border: 1px solid;
     border-radius: 15px;
+    height: 65px;
 
 
 }
@@ -225,7 +226,7 @@ margin-bottom: 9px;
 }
 
 .currency-logo {
-
+  padding-top: 4px;
   transition: all .15s;
 }
 
