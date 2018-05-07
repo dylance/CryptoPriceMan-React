@@ -1,5 +1,7 @@
 import React from 'react';
 
+import classes from './current_price_item.css'
+
 const CurrentPriceItem = (props) => {
 
   var priceId = props.coin || ''
