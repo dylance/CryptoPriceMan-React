@@ -1,0 +1,18 @@
+#dailyHigh {
+    border-bottom: solid 2px;
+    background-color: lightgrey;
+    background: linear-gradient(to bottom right,#457fca,#5691c8 );
+    border: 1px solid;
+    border-radius: 15px;
+    height: 65px;
+}
+
+.currency-logo {
+  padding-top: 4px;
+  transition: all .15s;
+}
+
+.currency-logo:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

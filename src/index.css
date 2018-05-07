@@ -104,18 +104,7 @@ margin-bottom: 9px;
 
 }
 
-#dailyHigh {
 
-
-    border-bottom: solid 2px;
-    background-color: lightgrey;
-    background: linear-gradient(to bottom right,#457fca,#5691c8 );
-    border: 1px solid;
-    border-radius: 15px;
-    height: 65px;
-
-
-}
 
 
 
@@ -213,24 +202,4 @@ margin-bottom: 9px;
 
 .table-logos {
   min-width: 140px;
-}
-
-.photoGetsLarger {
-  height: 25px;
-  width: 25px;
-  transition: all .15s;
-}
-
-.photoGetsLarger:hover {
-  transform: scale(1.1);
-}
-
-.currency-logo {
-  padding-top: 4px;
-  transition: all .15s;
-}
-
-.currency-logo:hover {
-  transform: scale(1.1);
-  cursor: pointer;
 }
