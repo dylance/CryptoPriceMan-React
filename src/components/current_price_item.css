@@ -1,6 +1,4 @@
-.Price-Table {
-    overflow: scroll;
-}
+
 
 .Pricess {
   min-width: 140px;
@@ -8,4 +6,43 @@
 
 .table-logos {
   min-width: 140px;
+}
+
+#BTC-Logo{
+    border: 2px solid transparent;
+    border-radius: 45px;
+}
+
+#BTC-Logo:hover{
+    border: 2px solid;
+    border-radius: 45px;
+    border-color:  #00A74F;
+    transition: .2s;
+    cursor: pointer;
+
+}
+
+#LTC-Logo{
+    border: 2px solid transparent;
+    border-radius: 45px;
+}
+
+#LTC-Logo:hover{
+    border: 2px solid;
+    border-radius: 45px;
+    border-color:  #646566;
+    transition: .2s;
+    cursor: pointer;
+}
+
+#ETH-Logo:hover{
+    /*border-top: 2px solid;
+    border-color: #646566;
+    transform: scale(1.1);*/
+    cursor: pointer;
+
+    -webkit-filter: drop-shadow(2px 1px 0 blue)
+                      drop-shadow(-1px -1px 0 blue);
+      filter: drop-shadow(2px 1px 0 blue)
+              drop-shadow(-1px -1px 0 blue);
 }
