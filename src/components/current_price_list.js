@@ -1,5 +1,7 @@
 import React from 'react';
-import CurrentPriceItem from './current_price_item'
+
+import CurrentPriceItem from './current_price_item';
+import classes from './current_price_list.css'
 
 const CurrentPriceList = (props) => {
 
@@ -27,7 +29,7 @@ const CurrentPriceList = (props) => {
 
   return (
     <div className="Price-Table">
-    <table class="table">
+    <table className="table">
   <thead>
     <tr>
       <th scope="col">Coin</th>
