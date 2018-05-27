@@ -2,6 +2,14 @@
     overflow: scroll;
 }
 
-#rowprice {
+#row-price {
     background-color: #282c34
+}
+
+#stats-row {
+  max-height: 50px;
+}
+
+.hr-cell {
+  min-width: 100px;
 }
