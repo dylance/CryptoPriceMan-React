@@ -65,7 +65,9 @@ class App extends Component {
   currentPriceRequest(url,coin) {
       // need to use arrow functions with fetch to have 'this' lexically scoped to component
       fetch(url).then((response) => {
+        if (response.status == 200){
           return response.json();
+        }
       }).then((myJson) => {
           myJson.coin = coin.slice(7, 10).toLowerCase();
           let price = Number(myJson.price);
@@ -96,7 +98,9 @@ class App extends Component {
   // url (required), options (optional)
   dailyHighRequest(url, coin) {
       fetch(url).then((response) => {
+        if (response.status == 200){
           return response.json();
+        }
       }).then((myJson) => {
           let high = Number(myJson.high);
           high = parseFloat(high)
