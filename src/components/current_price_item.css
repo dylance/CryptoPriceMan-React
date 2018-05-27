@@ -1,11 +1,12 @@
 
 
 .Pricess {
-  min-width: 140px;
+  min-width: 110px;
+  padding-right: 0px;
 }
 
 .table-logos {
-  min-width: 140px;
+  min-width: 120px;
 }
 
 #BTC-Logo{
