@@ -13,7 +13,7 @@ const Currency = (props) => {
             </div>
             <div className="col-xs-3">
                 <  img className="currency-logo"
-                  src={process.env.PUBLIC_URL + '/img/usd.png'} height="60" alt="USD"
+                  src={process.env.PUBLIC_URL + '/img/USD.png'} height="60" alt="USD"
                   onClick={
                      () => props.onUsdClick(props.currency)
                   }
@@ -22,7 +22,7 @@ const Currency = (props) => {
             </div>
             <div className="col-xs-3">
               <img className="currency-logo"
-                src={process.env.PUBLIC_URL + '/img/eur.png'} height="60" alt="USD"
+                src={process.env.PUBLIC_URL + '/img/EUR.png'} height="60" alt="USD"
                 onClick={
                    () => props.onEurClick(props.currency)
                 }
