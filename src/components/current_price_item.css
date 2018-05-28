@@ -7,6 +7,7 @@
 
 .table-logos {
   min-width: 120px;
+
 }
 
 #BTC-Logo{
@@ -46,4 +47,21 @@
                       drop-shadow(-1px -1px 0 blue);
       filter: drop-shadow(2px 1px 0 blue)
               drop-shadow(-1px -1px 0 blue);
+}
+
+#test {
+  vertical-align: middle;
+  margin-top: 15px;
+}
+
+#price-rows {
+  vertical-align: middle;
+}
+.stat-cell {
+  vertical-align: middle !important;
+}
+
+#ticker{
+  margin-left: 5px;
+  
 }

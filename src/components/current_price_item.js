@@ -44,22 +44,26 @@ const CurrentPriceItem = (props) => {
     volume = Number(props.volume)
   }
   return (
-    <tr>
-      <th scope="row" className="table-logos">
+    <tr id="price-rows">
+      <th scope="row" className="table-logos stat-cell">
         <span>
         <img id={imgId} className="logo" src={process.env.PUBLIC_URL +
         '/img/' + props.coin +'.png'} height="50" alt="Bitcoin"/>
+
+        </span>
+        <span id="ticker">
         {ticker.toUpperCase()}
         </span>
+
       </th>
-      <td className="Pricess">
+      <td className="Pricess stat-cell">
         <span >{props.currency == "usd" ? "$ " : "€ " }
           {Number(props.price).toLocaleString(undefined, {maximumFractionDigits:2})}
         </span>
       </td>
-      <td>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-      <td>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
-      <td>{Number(low).toLocaleString(undefined, {maximumFractionDigits:2})}</td>
+      <td className="stat-cell"><span>{volume.toLocaleString(undefined, {maximumFractionDigits:2})}</span></td>
+      <td className="stat-cell"><span>{Number(high).toLocaleString(undefined, {maximumFractionDigits:2})}</span></td>
+      <td className="stat-cell"><span>{Number(low).toLocaleString(undefined, {maximumFractionDigits:2})}</span></td>
     </tr>
   )
 }
